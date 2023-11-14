@@ -38,7 +38,7 @@
             (summury)</a>
         </td>
         <td>
-            <form th:action="@{/issues/delete/{issueId}(issueId=${issue.id})}" th:method="post">
+            <form th:action="@{/issues/delete/{issueId}(issueId=${issue.id})}" th:method="delete">
                 <button type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">削除</button>
             </form>
 

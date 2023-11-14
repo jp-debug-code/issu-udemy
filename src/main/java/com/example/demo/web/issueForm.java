@@ -20,7 +20,7 @@ public class issueForm {
         this.id = id;
     }
 
-    private long id;
+    private Long id;
     @NotBlank
     @Size(max=256)
     private String summury;

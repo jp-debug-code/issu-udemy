@@ -18,6 +18,7 @@ public class Controller {
     public Controller(issueService ic, issueRepositry repo) {
         this.ic = ic;
         this.repo = repo;
+
     }
 
 
@@ -54,14 +55,14 @@ public class Controller {
 
     }
 
-//    @GetMapping("/updateform/{id}") //遷移処理
-//    public String showupdateform(@PathVariable("id") long issueId ,Model model) {
-//        issueEntity issue =ic.findById(issueId);
-//        issueForm form = issueService.update(issue.getId(), issue.getSummury(), issue.getDescription());
-//
-//
-//        return "issues/updateform";
-//    }//TODO issueFormをModel内に登録する
+    @GetMapping("/updateform/{id}") //遷移処理
+    public String showupdateform(@PathVariable("id") long issueId ,Model model) {
+        issueEntity issue =ic.findById(issueId);
+        //issueForm form = issueService.update(issue.getId(), issue.getSummury(), issue.getDescription());
+        model.addAttribute("issue",ic.findById(issueId));
+
+        return "issues/updateform";
+    }//TODO issueFormをModel内に登録する
 
 //    @PostMapping("/update")//form処理　post/issuesを受け取る
 //    public String update( @RequestParam("id")long id ,Model model, @Validated issueForm form, BindingResult bindingresult) {
@@ -77,7 +78,7 @@ public class Controller {
 //        return "redirect:/issues";//redirectを使う際は、Controllerのハンドラメソッドの戻り値にredirect:から始まる文字列を指定する。
 //
 //    }
-    @PostMapping("/delete/{issueId}")
+    @DeleteMapping("/delete/{issueId}")
     public String delete(@PathVariable("issueId") long id) {
         ic.delete(id);
         //repo.resetAutoIncrement();
